@@ -16,7 +16,7 @@ impl KvStore {
     pub fn get(&self, key: String) -> Option<String> {
         self.store.get(&key).cloned()
     }
-    pub fn remove(&mut self, _key: String) {
-        panic!();
+    pub fn remove(&mut self, key: String) {
+        self.store.remove(&key);
     }
 }
