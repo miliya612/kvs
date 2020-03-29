@@ -9,3 +9,12 @@ subcommands:
           - KEY:
               help: key name stored in kvs
               required: true
+    - set:
+        about: Set the value of a string key to a string
+        args:
+          - KEY:
+              help: key name to be stored in kvs
+              required: true
+          - VALUE:
+              help: value to be stored in kvs
+              required: true
