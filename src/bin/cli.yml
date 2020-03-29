@@ -1,3 +1,4 @@
 name: kvs
+version: "0.1.0"
 author: Brian Anderson <andersrb@gmail.com>
 about: A key-value store
