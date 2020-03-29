@@ -18,3 +18,9 @@ subcommands:
           - VALUE:
               help: value to be stored in kvs
               required: true
+    - rm:
+        about: Remove a given key
+        args:
+          - KEY:
+              help: key name stored in kvs
+              required: true
