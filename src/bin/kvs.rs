@@ -7,6 +7,7 @@ fn main() {
     let matches = App::from_yaml(yaml).get_matches();
 
     match matches.subcommand() {
+        ("get", Some(_)) => panic!("unimplemented"),
         ("", None) => panic!("No subcommand was specified!"),
         _ => unreachable!(),
     }

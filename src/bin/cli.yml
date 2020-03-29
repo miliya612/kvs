@@ -2,3 +2,10 @@ name: kvs
 version: "0.1.0"
 author: Brian Anderson <andersrb@gmail.com>
 about: A key-value store
+subcommands:
+    - get:
+        about: Get the string value of a given string key
+        args:
+          - KEY:
+              help: key name stored in kvs
+              required: true
