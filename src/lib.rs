@@ -10,8 +10,8 @@ impl KvStore {
             store: HashMap::new(),
         }
     }
-    pub fn set(&mut self, _key: String, _value: String) {
-        panic!();
+    pub fn set(&mut self, key: String, value: String) {
+        self.store.insert(key, value);
     }
     pub fn get(&self, _key: String) -> Option<String> {
         panic!();
