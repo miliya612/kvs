@@ -6,21 +6,21 @@ subcommands:
     - get:
         about: Get the string value of a given string key
         args:
-          - KEY:
+          - key:
               help: key name stored in kvs
               required: true
     - set:
         about: Set the value of a string key to a string
         args:
-          - KEY:
+          - key:
               help: key name to be stored in kvs
               required: true
-          - VALUE:
+          - value:
               help: value to be stored in kvs
               required: true
     - rm:
         about: Remove a given key
         args:
-          - KEY:
+          - key:
               help: key name stored in kvs
               required: true
