@@ -1,8 +1,14 @@
-pub struct KvStore;
+use std::collections::HashMap;
+
+pub struct KvStore {
+    store: HashMap<String, String>,
+}
 
 impl KvStore {
     pub fn new() -> KvStore {
-        panic!();
+        KvStore {
+            store: HashMap::new(),
+        }
     }
     pub fn set(&mut self, _key: String, _value: String) {
         panic!();
