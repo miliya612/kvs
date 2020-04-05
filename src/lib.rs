@@ -5,6 +5,7 @@
 use std::collections::HashMap;
 
 /// KvStore includes std::collections::HashMap as its storage.
+#[derive(Default)]
 pub struct KvStore {
     store: HashMap<String, String>,
 }
