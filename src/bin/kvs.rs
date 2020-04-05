@@ -1,23 +1,43 @@
-#[macro_use]
-extern crate clap;
-use clap::App;
+use structopt::StructOpt;
 
-use std::env;
+#[derive(Debug, StructOpt)]
+#[structopt(author = env!("CARGO_PKG_AUTHORS"), about = env!("CARGO_PKG_DESCRIPTION"))]
+#[structopt(setting(clap::AppSettings::ColoredHelp))]
+struct Opt {
+    #[structopt(subcommand)]
+    pub sub: Cmd,
+}
+
+#[derive(Debug, StructOpt)]
+pub enum Cmd {
+    #[structopt(name = "set", about = "Set the value of a string key to a string")]
+    #[structopt(setting(clap::AppSettings::ColoredHelp))]
+    Set {
+        #[structopt(name = "KEY")]
+        key: String,
+        #[structopt(name = "VALUE")]
+        value: String,
+    },
+    #[structopt(name = "get", about = "Get the string value of a given string key")]
+    #[structopt(setting(clap::AppSettings::ColoredHelp))]
+    Get {
+        #[structopt(name = "KEY")]
+        key: String,
+    },
+    #[structopt(name = "rm", about = "Remove a given key")]
+    #[structopt(setting(clap::AppSettings::ColoredHelp))]
+    Remove {
+        #[structopt(name = "KEY")]
+        key: String,
+    },
+}
 
 fn main() {
-    let yaml = load_yaml!("cli.yml");
-    let matches = App::from_yaml(yaml)
-        .name(env!("CARGO_PKG_NAME"))
-        .version(env!("CARGO_PKG_VERSION"))
-        .author(env!("CARGO_PKG_AUTHORS"))
-        .about(env!("CARGO_PKG_DESCRIPTION"))
-        .get_matches();
+    let opt = Opt::from_args();
 
-    match matches.subcommand() {
-        ("get", Some(_)) => panic!("unimplemented"),
-        ("set", Some(_)) => panic!("unimplemented"),
-        ("rm", Some(_)) => panic!("unimplemented"),
-        ("", None) => panic!("No subcommand was specified!"),
-        _ => unreachable!(),
+    match opt.sub {
+        Cmd::Get { key: _ } => panic!("unimplemented"),
+        Cmd::Set { key: _, value: _ } => panic!("unimplemented"),
+        Cmd::Remove { key: _ } => panic!("unimplemented"),
     }
 }
