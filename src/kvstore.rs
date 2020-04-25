@@ -1,4 +1,6 @@
+use crate::Result;
 use std::collections::HashMap;
+use std::path::PathBuf;
 
 /// KvStore includes std::collections::HashMap as its storage.
 #[derive(Default)]
@@ -24,6 +26,7 @@ impl KvStore {
     ///
     /// If given key was already set to the `KvStore` instance, its value would be
     /// overwritten with given value.
+    /// Return an error if the value is not written successfully.
     ///
     /// # Examples
     ///
@@ -37,10 +40,14 @@ impl KvStore {
     /// store.set("lang".to_owned(), "Japanese".to_owned());
     /// assert_eq!(store.get("lang".to_owned()), Some("Japanese".to_owned()));
     /// ```
-    pub fn set(&mut self, key: String, value: String) {
-        self.store.insert(key, value);
+    pub fn set(&mut self, _key: String, _value: String) -> Result<()> {
+        //self.store.insert(key, value);
+        panic!("unimplemented!");
     }
     /// Get the value associated with the given key.
+    ///
+    /// If the key does not exist, return `None`.
+    /// Return an error if the value is not read successfully.
     ///
     /// # Examples
     ///
@@ -53,10 +60,13 @@ impl KvStore {
     /// store.set("lang".to_owned(), "English".to_owned());
     /// assert_eq!(store.get("lang".to_owned()), Some("English".to_owned()));
     /// ```
-    pub fn get(&self, key: String) -> Option<String> {
-        self.store.get(&key).cloned()
+    pub fn get(&self, _key: String) -> Result<Option<String>> {
+        //self.store.get(&key).cloned()
+        panic!("unimplemented!");
     }
     /// Remove the value accosiated with the given key.
+    ///
+    /// Return an error if the key does not exist or is not removed successfully.
     ///
     /// # Examples
     ///
@@ -70,7 +80,13 @@ impl KvStore {
     /// store.remove("lang".to_owned());
     /// assert_eq!(store.get("lang".to_owned()), None);
     /// ```
-    pub fn remove(&mut self, key: String) {
-        self.store.remove(&key);
+    pub fn remove(&mut self, _key: String) -> Result<()> {
+        //self.store.remove(&key);
+        panic!("unimplemented!");
+    }
+
+    /// Open the KvStore at a given path. Return the KvStore.
+    pub fn open<T: Into<PathBuf>>(_path: T) -> Result<KvStore> {
+        panic!("unimplemented!");
     }
 }
