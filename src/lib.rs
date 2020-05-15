@@ -3,7 +3,7 @@
 //!
 //! kvs stores `String` type as its key and value.
 
-pub use errors::Result;
+pub use errors::{KvsError, Result};
 pub use kvstore::KvStore;
 
 mod errors;
